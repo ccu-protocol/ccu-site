@@ -22,21 +22,102 @@
       --radius:18px;
       --max:1100px;
     }
+
     *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
-    .nav{position:sticky;top:0;background:rgba(247,248,251,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
-    .navin,.wrap{max-width:var(--max);margin:0 auto;padding:16px}
-    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
-    .brand img{width:40px;height:40px;border-radius:10px}
-    .menu{display:flex;gap:14px;flex-wrap:wrap}
-    .menu a{text-decoration:none;color:var(--muted);font-weight:700}
-    .menu a.active,.menu a:hover{color:var(--brand)}
-    .hero{padding:24px 0 8px}
-    h1,h2,h3{margin:0 0 12px}
-    h1{font-size:40px}
-    p{line-height:1.8;color:#243041}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    body{
+      margin:0;
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+
+    .nav{
+      position:sticky;
+      top:0;
+      background:rgba(247,248,251,.92);
+      -webkit-backdrop-filter:blur(10px);
+      backdrop-filter:blur(10px);
+      border-bottom:1px solid var(--line);
+      z-index:50;
+    }
+
+    .navin,
+    .wrap{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:16px;
+    }
+
+    .navin{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+      color:inherit;
+    }
+
+    .brand img{
+      width:40px;
+      height:40px;
+      border-radius:10px;
+    }
+
+    .brand strong{
+      font-size:20px;
+    }
+
+    .menu{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:var(--muted);
+      font-weight:700;
+      padding:6px 2px;
+      border-bottom:2px solid transparent;
+    }
+
+    .menu a.active,
+    .menu a:hover{
+      color:var(--brand);
+      border-bottom-color:var(--brand);
+    }
+
+    .hero{
+      padding:24px 0 8px;
+    }
+
+    h1,h2,h3{
+      margin:0 0 12px;
+    }
+
+    h1{
+      font-size:40px;
+    }
+
+    p{
+      line-height:1.8;
+      color:#243041;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
     .card{
       background:var(--card);
       border:1px solid var(--line);
@@ -44,31 +125,72 @@
       box-shadow:var(--shadow);
       padding:22px;
     }
-    .num{font-size:34px;font-weight:800;line-height:1}
-    .label{color:var(--muted);font-weight:700;margin-top:8px}
-    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
-    .step{border:1px dashed #cfd5e3;border-radius:14px;padding:14px;background:#fff}
-    .ok{color:var(--ok);font-weight:700}
-    .warn{color:var(--warn);font-weight:700}
-    .footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+
+    .num{
+      font-size:34px;
+      font-weight:800;
+      line-height:1;
+    }
+
+    .label{
+      color:var(--muted);
+      font-weight:700;
+      margin-top:8px;
+    }
+
+    .flow{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .step{
+      border:1px dashed #cfd5e3;
+      border-radius:14px;
+      padding:14px;
+      background:#fff;
+    }
+
+    .ok{
+      color:var(--ok);
+      font-weight:700;
+    }
+
+    .warn{
+      color:var(--warn);
+      font-weight:700;
+    }
+
+    .footer{
+      margin-top:28px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+      color:var(--muted);
+    }
+
     @media (max-width:900px){
-      .grid,.flow{grid-template-columns:1fr}
-      h1{font-size:32px}
+      .grid,
+      .flow{
+        grid-template-columns:1fr;
+      }
+
+      h1{
+        font-size:32px;
+      }
     }
   </style>
-
-  <script type="module" src="../js/i18n.js"></script>
 </head>
 <body>
   <div class="nav">
     <div class="navin">
-      <a class="brand" href="../index.html">
-        <img src="../assets/logo.png" alt="CCU" />
+      <a class="brand" href="./index.html">
+        <img src="./logo.png" alt="CCU" />
         <strong>CCU Protocol</strong>
       </a>
 
       <nav class="menu">
-        <a href="../index.html">Home</a>
+        <a href="./index.html">Home</a>
         <a href="./protocol.html">Protocol</a>
         <a href="./transparency.html">Transparency</a>
         <a class="active" href="./emergency.html">Emergency</a>
@@ -91,7 +213,7 @@
       <div class="card">
         <div class="num">500,000</div>
         <div class="label">Emergency Floor</div>
-        <p class="muted">
+        <p>
           If the verified emergency need is below this level, the minimum emergency issuance is still
           set at 500,000 CCU.
         </p>
@@ -100,7 +222,7 @@
       <div class="card">
         <div class="num">1,200,000</div>
         <div class="label">Emergency Normal Ceiling</div>
-        <p class="muted">
+        <p>
           If the verified need is between the floor and this range, the emergency mint follows the
           verified amount. Above this range, the mint is capped here.
         </p>
@@ -109,7 +231,7 @@
       <div class="card">
         <div class="num">5,000,000</div>
         <div class="label">Emergency Hard Cap</div>
-        <p class="muted">
+        <p>
           This is the maximum policy bound for emergency capacity. It is not intended for arbitrary,
           uncontrolled issuance.
         </p>
@@ -135,19 +257,19 @@
       <div class="flow">
         <div class="step">
           <h3>1. Evidence</h3>
-          <p class="muted">Crisis evidence and ledger basis are prepared.</p>
+          <p>Crisis evidence and ledger basis are prepared.</p>
         </div>
         <div class="step">
           <h3>2. Approval</h3>
-          <p class="muted">Admin, operator, verifier, and auditor participate in the activation process.</p>
+          <p>Admin, operator, verifier, and auditor participate in the activation process.</p>
         </div>
         <div class="step">
           <h3>3. Policy Mint</h3>
-          <p class="muted">Mint follows floor/ceiling policy, not tiny event fragments.</p>
+          <p>Mint follows floor/ceiling policy, not tiny event fragments.</p>
         </div>
         <div class="step">
           <h3>4. Treasury Backstop</h3>
-          <p class="muted">Amounts beyond normal emergency mint are treasury candidates.</p>
+          <p>Amounts beyond normal emergency mint are treasury candidates.</p>
         </div>
       </div>
     </section>
@@ -169,7 +291,5 @@
       Emergency policy is bounded, evidence-based, and designed to reduce both operational paralysis and market panic.
     </div>
   </main>
-  <script type="module" src="../js/i18n.js"></script>
 </body>
-
 </html>
