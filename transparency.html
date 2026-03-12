@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CCU Transparency</title>
+  <meta name="description" content="Public transparency page for CCU protocol, anchored ledgers, issuance logic, and reporting." />
+  <link rel="icon" href="../assets/logo.png" />
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#fff;
+      --text:#16181d;
+      --muted:#667085;
+      --line:#e6e8ee;
+      --brand:#4f46e5;
+      --soft:#eef2ff;
+      --shadow:0 10px 30px rgba(16,24,40,.06);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    .nav{position:sticky;top:0;background:rgba(247,248,251,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+    .navin,.wrap{max-width:var(--max);margin:0 auto;padding:16px}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{width:40px;height:40px;border-radius:10px}
+    .menu{display:flex;gap:14px;flex-wrap:wrap}
+    .menu a{text-decoration:none;color:var(--muted);font-weight:700}
+    .menu a.active,.menu a:hover{color:var(--brand)}
+    .hero{padding:24px 0 10px}
+    h1,h2,h3{margin:0 0 12px}
+    h1{font-size:40px}
+    p{line-height:1.8;color:#243041}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+      background:#fafbff;border:1px solid var(--line);padding:12px 14px;border-radius:12px;
+      overflow:auto;word-break:break-all
+    }
+    .table{width:100%;border-collapse:collapse}
+    .table th,.table td{padding:12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+    .table th{color:var(--muted);font-size:14px}
+    .badge{
+      display:inline-block;padding:7px 10px;border-radius:999px;background:var(--soft);
+      color:var(--brand);font-weight:700;font-size:13px
+    }
+    .footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+  </style>
+
+  <script type="module" src="../js/i18n.js"></script>
+</head>
+<body>
+  <div class="nav">
+    <div class="navin">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.png" alt="CCU" />
+        <strong>CCU Protocol</strong>
+      </a>
+
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+        <a href="./protocol.html">Protocol</a>
+        <a class="active" href="./transparency.html">Transparency</a>
+        <a href="./emergency.html">Emergency</a>
+        <a href="./token.html">Token</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Transparency & Public Auditability</h1>
+      <p>
+        CCU is designed so that issuance is explainable and externally reviewable. Ledger files,
+        anchor roots, emergency policy bounds, and role-based approvals form the public integrity layer.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Public Transparency Commitments</h2>
+        <table class="table">
+          <tr>
+            <th>Area</th>
+            <th>Public Commitment</th>
+          </tr>
+          <tr>
+            <td>Ledger Files</td>
+            <td>Operational and emergency ledgers are prepared as auditable records.</td>
+          </tr>
+          <tr>
+            <td>Anchor Roots</td>
+            <td>Ledger roots are anchored on-chain to prevent silent rewriting.</td>
+          </tr>
+          <tr>
+            <td>Role Logic</td>
+            <td>Issuance depends on explicit governance roles and approvals.</td>
+          </tr>
+          <tr>
+            <td>Emergency Policy</td>
+            <td>Emergency issuance follows floor, ceiling, and hard cap rules.</td>
+          </tr>
+          <tr>
+            <td>Treasury Support</td>
+            <td>Needs beyond emergency mint range should be handled by treasury support logic.</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="card">
+        <h2>Current Public Fields</h2>
+        <p class="badge">Example structure</p>
+        <div class="mono">
+Contract Address<br/>
+Token Symbol<br/>
+Decimals<br/>
+Latest Anchored Period<br/>
+Latest Emergency Window<br/>
+Treasury Policy Summary<br/>
+Operations Wallet Policy
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Anchor Model</h2>
+        <p>
+          Ledger entries are reduced to a root so that on-chain records can verify the existence
+          of the public issuance basis without requiring the full document to be stored on-chain.
+        </p>
+        <ul>
+          <li>Ledger events are normalized</li>
+          <li>Leaf hashes are generated</li>
+          <li>Merkle root is calculated</li>
+          <li>Root is anchored on-chain</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Reporting Philosophy</h2>
+        <p>
+          CCU does not aim for vague issuance. The goal is to show what was approved, what was minted,
+          and what remains under treasury or emergency policy constraints.
+        </p>
+        <table class="table">
+          <tr><th>Metric</th><th>Purpose</th></tr>
+          <tr><td>Genesis Reserve</td><td>Long-term reserve visibility</td></tr>
+          <tr><td>Daily Minted</td><td>Operational issuance visibility</td></tr>
+          <tr><td>Emergency Approved</td><td>Policy-approved emergency range visibility</td></tr>
+          <tr><td>Emergency Minted</td><td>Actual emergency issuance visibility</td></tr>
+          <tr><td>Treasury Required</td><td>Unmet crisis demand handled by reserve policy</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>What Users Should Be Able to Verify</h2>
+      <ul>
+        <li>That a ledger file existed before issuance</li>
+        <li>That the anchored root matches the published ledger basis</li>
+        <li>That the mint path followed policy bounds</li>
+        <li>That treasury and operations functions remain separated</li>
+        <li>That emergency actions were not arbitrary or unlimited</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Transparency is not only publishing numbers. It is making issuance behavior reviewable.
+    </div>
+  </main>
+</body>
+</html>

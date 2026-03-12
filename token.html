@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CCU Token</title>
+  <meta name="description" content="CCU token page: contract, network, decimals, wallet actions, and token usage." />
+  <link rel="icon" href="../assets/logo.png" />
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#fff;
+      --text:#16181d;
+      --muted:#667085;
+      --line:#e6e8ee;
+      --brand:#4f46e5;
+      --brand-soft:#eef2ff;
+      --shadow:0 10px 30px rgba(16,24,40,.06);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    .nav{position:sticky;top:0;background:rgba(247,248,251,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+    .navin,.wrap{max-width:var(--max);margin:0 auto;padding:16px}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{width:40px;height:40px;border-radius:10px}
+    .menu{display:flex;gap:14px;flex-wrap:wrap}
+    .menu a{text-decoration:none;color:var(--muted);font-weight:700}
+    .menu a.active,.menu a:hover{color:var(--brand)}
+    h1,h2,h3{margin:0 0 12px}
+    h1{font-size:40px}
+    p{line-height:1.8;color:#243041}
+    .hero{padding:24px 0 10px}
+    .grid{display:grid;grid-template-columns:1.2fr .9fr;gap:18px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .mono{
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      background:#fafbff;border:1px solid var(--line);padding:12px 14px;border-radius:12px;
+      word-break:break-all
+    }
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    button,a.btn{
+      border:0;background:var(--brand);color:#fff;padding:12px 16px;border-radius:12px;
+      text-decoration:none;font-weight:700;cursor:pointer
+    }
+    a.btn.secondary,button.secondary{
+      background:#fff;color:var(--brand);border:1px solid #cfd5e3
+    }
+    .table{width:100%;border-collapse:collapse}
+    .table td,.table th{padding:12px;border-bottom:1px solid var(--line);text-align:left}
+    .table th{color:var(--muted);font-size:14px}
+    .footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+    @media (max-width:900px){
+      .grid{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+  </style>
+
+  <script type="module" src="../js/i18n.js"></script>
+</head>
+<body>
+  <div class="nav">
+    <div class="navin">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.png" alt="CCU" />
+        <strong>CCU Protocol</strong>
+      </a>
+
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+        <a href="./protocol.html">Protocol</a>
+        <a href="./transparency.html">Transparency</a>
+        <a href="./emergency.html">Emergency</a>
+        <a class="active" href="./token.html">Token</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>CCU Token</h1>
+      <p>
+        This page provides the core token information required for wallet setup, on-chain verification,
+        and user-side interaction with the CCU protocol.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Token Information</h2>
+        <table class="table">
+          <tr><th>Token Name</th><td>CCU Protocol Token</td></tr>
+          <tr><th>Symbol</th><td>CCU</td></tr>
+          <tr><th>Network</th><td>Polygon Mainnet</td></tr>
+          <tr><th>Decimals</th><td>6</td></tr>
+          <tr><th>Contract</th><td class="mono">0xea1f8D12A14e1F143d66fcdcfEf24E137B658f17</td></tr>
+        </table>
+
+        <div class="btns">
+          <button onclick="addTokenToMetaMask()">Add CCU to MetaMask</button>
+          <button class="secondary" onclick="switchToPolygon()">Switch to Polygon</button>
+          <a class="btn secondary" href="https://polygonscan.com/address/0xea1f8D12A14e1F143d66fcdcfEf24E137B658f17" target="_blank" rel="noopener">View on Polygonscan</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Wallet Notes</h2>
+        <ul>
+          <li>Users should add the <strong>token contract address</strong>, not a wallet address.</li>
+          <li>Wallets need <strong>POL</strong> for transaction fees on Polygon.</li>
+          <li>Operations, treasury, and governance wallets should always keep gas reserves.</li>
+          <li>CCU uses <strong>6 decimals</strong>.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2>Token Utility Context</h2>
+        <p>
+          CCU is intended as a verified compensation credit for policy-bounded issuance, transparent
+          operations, emergency response, and auditable regeneration or prevention programs.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Important Distinctions</h2>
+        <ul>
+          <li><strong>Token Contract Address:</strong> defines the token itself</li>
+          <li><strong>Wallet Address:</strong> holds balances</li>
+          <li><strong>Private Key / Seed:</strong> controls spending authority</li>
+        </ul>
+        <p>
+          Never enter a wallet address into the “Custom Token” field when you intend to add CCU to a wallet.
+        </p>
+      </div>
+    </section>
+
+    <div class="footer">
+      Users should always verify contract address, network, and decimals before adding any token to a wallet.
+    </div>
+  </main>
+
+  <script src="../js/wallet.js"></script>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CCU Emergency Policy</title>
+  <meta name="description" content="CCU emergency issuance policy, bounds, treasury fallback, and crisis-response logic." />
+  <link rel="icon" href="../assets/logo.png" />
+
+  <style>
+    :root{
+      --bg:#f7f8fb;
+      --card:#fff;
+      --text:#16181d;
+      --muted:#667085;
+      --line:#e6e8ee;
+      --brand:#4f46e5;
+      --soft:#eef2ff;
+      --warn:#b54708;
+      --ok:#067647;
+      --shadow:0 10px 30px rgba(16,24,40,.06);
+      --radius:18px;
+      --max:1100px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    .nav{position:sticky;top:0;background:rgba(247,248,251,.92);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:50}
+    .navin,.wrap{max-width:var(--max);margin:0 auto;padding:16px}
+    .navin{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+    .brand img{width:40px;height:40px;border-radius:10px}
+    .menu{display:flex;gap:14px;flex-wrap:wrap}
+    .menu a{text-decoration:none;color:var(--muted);font-weight:700}
+    .menu a.active,.menu a:hover{color:var(--brand)}
+    .hero{padding:24px 0 8px}
+    h1,h2,h3{margin:0 0 12px}
+    h1{font-size:40px}
+    p{line-height:1.8;color:#243041}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:22px;
+    }
+    .num{font-size:34px;font-weight:800;line-height:1}
+    .label{color:var(--muted);font-weight:700;margin-top:8px}
+    .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px}
+    .step{border:1px dashed #cfd5e3;border-radius:14px;padding:14px;background:#fff}
+    .ok{color:var(--ok);font-weight:700}
+    .warn{color:var(--warn);font-weight:700}
+    .footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted)}
+    @media (max-width:900px){
+      .grid,.flow{grid-template-columns:1fr}
+      h1{font-size:32px}
+    }
+  </style>
+
+  <script type="module" src="../js/i18n.js"></script>
+</head>
+<body>
+  <div class="nav">
+    <div class="navin">
+      <a class="brand" href="../index.html">
+        <img src="../assets/logo.png" alt="CCU" />
+        <strong>CCU Protocol</strong>
+      </a>
+
+      <nav class="menu">
+        <a href="../index.html">Home</a>
+        <a href="./protocol.html">Protocol</a>
+        <a href="./transparency.html">Transparency</a>
+        <a class="active" href="./emergency.html">Emergency</a>
+        <a href="./token.html">Token</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <h1>Emergency Issuance Policy</h1>
+      <p>
+        CCU emergency issuance is not intended to behave like normal daily minting. It is a bounded,
+        policy-driven response layer designed for urgent needs while reducing the risk of uncontrolled
+        market shock.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="num">500,000</div>
+        <div class="label">Emergency Floor</div>
+        <p class="muted">
+          If the verified emergency need is below this level, the minimum emergency issuance is still
+          set at 500,000 CCU.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="num">1,200,000</div>
+        <div class="label">Emergency Normal Ceiling</div>
+        <p class="muted">
+          If the verified need is between the floor and this range, the emergency mint follows the
+          verified amount. Above this range, the mint is capped here.
+        </p>
+      </div>
+
+      <div class="card">
+        <div class="num">5,000,000</div>
+        <div class="label">Emergency Hard Cap</div>
+        <p class="muted">
+          This is the maximum policy bound for emergency capacity. It is not intended for arbitrary,
+          uncontrolled issuance.
+        </p>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>Emergency Decision Logic</h2>
+      <ul>
+        <li><strong>If need &lt; 500,000:</strong> emergency mint = 500,000</li>
+        <li><strong>If 500,000 ≤ need ≤ 1,200,000:</strong> emergency mint = verified need</li>
+        <li><strong>If need &gt; 1,200,000:</strong> emergency mint = 1,200,000</li>
+        <li><strong>Remaining unmet need:</strong> should be handled by treasury support policy</li>
+      </ul>
+      <p>
+        This structure exists so that emergency issuance remains meaningful in crisis conditions while
+        avoiding tiny or market-disturbing arbitrary outputs.
+      </p>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>Emergency Operational Flow</h2>
+      <div class="flow">
+        <div class="step">
+          <h3>1. Evidence</h3>
+          <p class="muted">Crisis evidence and ledger basis are prepared.</p>
+        </div>
+        <div class="step">
+          <h3>2. Approval</h3>
+          <p class="muted">Admin, operator, verifier, and auditor participate in the activation process.</p>
+        </div>
+        <div class="step">
+          <h3>3. Policy Mint</h3>
+          <p class="muted">Mint follows floor/ceiling policy, not tiny event fragments.</p>
+        </div>
+        <div class="step">
+          <h3>4. Treasury Backstop</h3>
+          <p class="muted">Amounts beyond normal emergency mint are treasury candidates.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <h2>Why This Matters</h2>
+      <p>
+        A crisis-response system that mints only trivial amounts during real emergency conditions fails
+        its own purpose. CCU emergency policy aims to preserve <span class="ok">minimum meaningful response</span>
+        while still respecting issuance bounds and market caution.
+      </p>
+      <p>
+        At the same time, if a crisis is extremely large, the system should not force unlimited on-chain
+        minting. That is where <span class="warn">treasury reserve support</span> becomes the correct response layer.
+      </p>
+    </section>
+
+    <div class="footer">
+      Emergency policy is bounded, evidence-based, and designed to reduce both operational paralysis and market panic.
+    </div>
+  </main>
+  <script type="module" src="../js/i18n.js"></script>
+</body>
+</html>
